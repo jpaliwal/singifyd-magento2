@@ -17,7 +17,7 @@ var config = {
                 'Signifyd_Connect/js/model/adyen-oneclick-method-mixin': true
             },
             "Holacash_Payment/js/view/payment/method-renderer/holacash_gateway": {
-                /Signifyd_Connect/js/model/holacash-cc-method-mixin': true,
+                'Signifyd_Connect/js/model/holacash-cc-method-mixin': true,
             }
         }
     }

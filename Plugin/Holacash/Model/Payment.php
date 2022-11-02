@@ -105,75 +105,75 @@ class Payment
         $code = $response["detail"]["code"] ?? '';
 
         switch ($code) {
-        case 'new_cvv_required':
-        case 'invalid_security_credentials':
-        case 'credit_card_validation_code_required':
-        case 'credit_card_validation_code_invalid':
-            $signifydReason = 'INVALID_CVC';
-            break;
-        case 'blocked_by_hola_cash_fraud_detection':
-        case 'invalid_anti_fraud_header_multiple':
-        case 'invalid_anti_fraud_header_format':
-        case 'invalid_anti_fraud_header_missing_ip_address':
-        case 'invalid_anti_fraud_header_missing_device_id':
-        case 'invalid_anti_fraud_header_missing_user_timezone':
-        case 'invalid_anti_fraud_header_invalid_user_timezone':
-        case 'invalid_anti_fraud_header_invalid_ip_address':
-        case 'three_ds_authentication_failed':
-        case 'credit_card_fraud_detected':
-        case '3D_authentication_failed':
-            $signifydReason = 'FRAUD_DECLINE';
-            break;
-        case 'bank_account_clabe_unrecognizable':
-        case 'bank_account_clabe_already_exists':
-        case 'bank_account_clabe_associated_with_hola_cash':
-        case 'bank_account_clabe_not_supported_spei_with_hola_cash':
-            $signifydReason = 'INCORRECT_NUMBER';
-            break;
-        case 'transaction_pin_required':
-        case 'credit_card_purchase_not_supported':
-        case 'credit_card_not_supported_on_line':
-        case 'credit_card_call_bank_to_authorize':
-        case 'card_declined':
-            $signifydReason = 'CARD_DECLINED';
-            break;
-        case 'credit_card_expired_year':
-        case 'credit_card_expired_month':
-        case 'credit_card_expired':
-        case 'invalid_card_expiry':
-            $signifydReason = 'INVALID_EXPIRY_DATE';
-            break;
-        case 'incorrect_pin':
-            $signifydReason = 'INCORRECT_CVC';
-            break;
-        case 'credit_card_number_invalid':
-        case 'payment_token_not_valid':
-        case 'payment_token_alias_not_valid':
-            $signifydReason = 'INCORRECT_NUMBER';
-            break;
-        case 'test_credit_card':
-            $signifydReason = 'TEST_CARD_DECLINE';
-            break;
-        case 'credit_card_insufficient_funds':
-            $signifydReason = 'INSUFFICIENT_FUNDS';
-            break;
-        case 'credit_card_stolen':
-        case 'credit_card_lost':
-            $signifydReason = 'STOLEN_CARD';
-            break;
-        case 'credit_card_restricted_by_bank':
-            $signifydReason = 'RESTRICTED_CARD';
-            break;
-        case 'credit_card_hold_card':
-            $signifydReason = 'PICK_UP_CARD';
-            break;
-        case 'create_charge_invalid_phone_number':
-            $signifydReason = 'INVALID_NUMBER';
-            break;
+            case 'new_cvv_required':
+            case 'invalid_security_credentials':
+            case 'credit_card_validation_code_required':
+            case 'credit_card_validation_code_invalid':
+                $signifydReason = 'INVALID_CVC';
+                break;
+            case 'blocked_by_hola_cash_fraud_detection':
+            case 'invalid_anti_fraud_header_multiple':
+            case 'invalid_anti_fraud_header_format':
+            case 'invalid_anti_fraud_header_missing_ip_address':
+            case 'invalid_anti_fraud_header_missing_device_id':
+            case 'invalid_anti_fraud_header_missing_user_timezone':
+            case 'invalid_anti_fraud_header_invalid_user_timezone':
+            case 'invalid_anti_fraud_header_invalid_ip_address':
+            case 'three_ds_authentication_failed':
+            case 'credit_card_fraud_detected':
+            case '3D_authentication_failed':
+                $signifydReason = 'FRAUD_DECLINE';
+                break;
+            case 'bank_account_clabe_unrecognizable':
+            case 'bank_account_clabe_already_exists':
+            case 'bank_account_clabe_associated_with_hola_cash':
+            case 'bank_account_clabe_not_supported_spei_with_hola_cash':
+                $signifydReason = 'INCORRECT_NUMBER';
+                break;
+            case 'transaction_pin_required':
+            case 'credit_card_purchase_not_supported':
+            case 'credit_card_not_supported_on_line':
+            case 'credit_card_call_bank_to_authorize':
+            case 'card_declined':
+                $signifydReason = 'CARD_DECLINED';
+                break;
+            case 'credit_card_expired_year':
+            case 'credit_card_expired_month':
+            case 'credit_card_expired':
+            case 'invalid_card_expiry':
+                $signifydReason = 'INVALID_EXPIRY_DATE';
+                break;
+            case 'incorrect_pin':
+                $signifydReason = 'INCORRECT_CVC';
+                break;
+            case 'credit_card_number_invalid':
+            case 'payment_token_not_valid':
+            case 'payment_token_alias_not_valid':
+                $signifydReason = 'INCORRECT_NUMBER';
+                break;
+            case 'test_credit_card':
+                $signifydReason = 'TEST_CARD_DECLINE';
+                break;
+            case 'credit_card_insufficient_funds':
+                $signifydReason = 'INSUFFICIENT_FUNDS';
+                break;
+            case 'credit_card_stolen':
+            case 'credit_card_lost':
+                $signifydReason = 'STOLEN_CARD';
+                break;
+            case 'credit_card_restricted_by_bank':
+                $signifydReason = 'RESTRICTED_CARD';
+                break;
+            case 'credit_card_hold_card':
+                $signifydReason = 'PICK_UP_CARD';
+                break;
+            case 'create_charge_invalid_phone_number':
+                $signifydReason = 'INVALID_NUMBER';
+                break;
 
-        default:
-            $signifydReason = 'PROCESSING_ERROR';
-            break;
+            default:
+                $signifydReason = 'PROCESSING_ERROR';
+                break;
         }
 
         if ($case->getEntries('HolaCashRefusedReason') == $signifydReason) {
